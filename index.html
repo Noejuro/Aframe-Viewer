@@ -1,0 +1,51 @@
+<head>
+    <!-- Librerias para el uso de a-frame y estilos -->
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/tizzle/aframe-orbit-controls-component@master/dist/aframe-orbit-controls-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="./server/style.css">
+</head>
+
+<body>
+    <div>
+        <!-- Creacion de la escena -->
+        <a-scene cursor="rayOrigin: mouse" style="height: 100%; width: 100%;" embedded  vr-mode-ui="enabled: false">
+            <!-- Cargamos el modelo pero no lo ponemos en la escena, simplemente cargamos sus texturas -->
+            <a-assets>
+                <!-- El modelo se cargará del archivo modelo.glb que se debe de encontrar en la misma carpeta que index -->
+                <a-asset-item id="modelo" src="./modelo.glb" response-type="arraybuffer"></a-asset-item>
+            </a-assets>
+            <!-- Creación de la camara con su posicion y rotacion y que siempre esté fijando al objeto  -->
+            <a-entity 
+            id="camera"
+            camera
+            position="-115.11149853409268 90.68960252409678 -199.1811177137674" 
+            rotation="-6.585732314930085 -92.46875101378141 8.00420359182992e-16"
+            orbit-controls="
+                target: #model;
+                autoRotate: false;
+                enableDamping: true;
+                dampingFactor: 0.25;
+                rotateSpeed:0.14;"
+                mouse-cursor="">
+            </a-entity>
+
+            <!-- Creacion de la entidad de la luz donde es tipo ambiental y de un color blanco (#FFFFFF) -->
+            <a-entity light="type: ambient; color: #FFFFFF"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- Mostramos el modelo en la escena -->
+            <!-- Para cambiar la posicion modificamos el atributo "position" donde el primer numero es el eje x, el segundo es y, y el tercero es eje z -->
+            <!-- Podemos rotar el modelo en la propiedad "rotation" y la escala en "scale"-->
+            <a-entity id="model" gltf-model="#modelo"  position="300 20 -340" rotation="0 270 0" scale="25 25 25"></a-entity>
+
+            <!-- <a-sky color="#222"></a-sky> -->
+            
+        </a-scene>
+
+    </div>
+    <!-- Controladores para los objetos -->
+    <script src="./server/control.js"></script>
+
+</body>
