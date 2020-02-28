@@ -10,12 +10,14 @@
 <body>
     <div>
         <!-- Creacion de la escena -->
+        <!-- La linea " light="defaultLightsEnabled: false" " elimina la iluminación por default de aframe -->
         <a-scene light="defaultLightsEnabled: false" cursor="rayOrigin: mouse" style="height: 100%; width: 100%;" embedded  vr-mode-ui="enabled: false">
             <!-- Cargamos el modelo pero no lo ponemos en la escena, simplemente cargamos sus texturas -->
             <a-assets>
                 <!-- El modelo se cargará del archivo modelo.glb que se debe de encontrar en la misma carpeta que index -->
                 <a-asset-item id="modelo" src="./modelo.glb" response-type="arraybuffer"></a-asset-item>
             </a-assets>
+            
             <!-- Creación de la camara con su posicion y rotacion y que siempre esté fijando al objeto  -->
             <a-entity 
             id="camera"
@@ -32,8 +34,10 @@
             </a-entity>
 
             <!-- Creacion de la entidad de la luz donde es tipo ambiental y de un color blanco (#FFFFFF) -->
+            <!-- Para que la luz fuera "plana" se cambió la intensidad de la luz a 0 -->
             <a-entity light="type: ambient; color: #FFFFFF"></a-entity>
             <a-entity light="type: directional; color: #FFF; intensity: 0" position="-0.5 1 1"></a-entity>
+
 
             <!-- Mostramos el modelo en la escena -->
             <!-- Para cambiar la posicion modificamos el atributo "position" donde el primer numero es el eje x, el segundo es y, y el tercero es eje z -->
