@@ -10,7 +10,7 @@
 <body>
     <div>
         <!-- Creacion de la escena -->
-        <a-scene cursor="rayOrigin: mouse" style="height: 100%; width: 100%;" embedded  vr-mode-ui="enabled: false">
+        <a-scene light="defaultLightsEnabled: false" cursor="rayOrigin: mouse" style="height: 100%; width: 100%;" embedded  vr-mode-ui="enabled: false">
             <!-- Cargamos el modelo pero no lo ponemos en la escena, simplemente cargamos sus texturas -->
             <a-assets>
                 <!-- El modelo se cargará del archivo modelo.glb que se debe de encontrar en la misma carpeta que index -->
@@ -33,7 +33,7 @@
 
             <!-- Creacion de la entidad de la luz donde es tipo ambiental y de un color blanco (#FFFFFF) -->
             <a-entity light="type: ambient; color: #FFFFFF"></a-entity>
-            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0" position="-0.5 1 1"></a-entity>
 
             <!-- Mostramos el modelo en la escena -->
             <!-- Para cambiar la posicion modificamos el atributo "position" donde el primer numero es el eje x, el segundo es y, y el tercero es eje z -->
